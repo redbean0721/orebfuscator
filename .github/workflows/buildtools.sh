@@ -15,6 +15,10 @@ build () {
   curl -o BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
   "$JAVA_HOME/bin/java" -jar BuildTools.jar --rev $1 --remapped
 
+  java -jar BuildTools.jar --rev 26.1
+  java -jar BuildTools.jar --rev 26.1.1
+  java -jar BuildTools.jar --rev 26.1.2
+
   cd ..
 }
 
@@ -25,10 +29,6 @@ checkVersion () {
     build $1 $2
   fi
 }
-
-java -jar BuildTools.jar --rev 26.1
-java -jar BuildTools.jar --rev 26.1.1
-java -jar BuildTools.jar --rev 26.1.2
 
 checkVersion "1.16.5" "8"
 checkVersion "1.17.1" "17"

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 build () {
   JAVA_PATH=$"JAVA_HOME_$2_X64"
   export JAVA_HOME=${!JAVA_PATH}
@@ -24,6 +26,10 @@ checkVersion () {
   fi
 }
 
+java -jar BuildTools.jar --rev 26.1
+java -jar BuildTools.jar --rev 26.1.1
+java -jar BuildTools.jar --rev 26.1.2
+
 checkVersion "1.16.5" "8"
 checkVersion "1.17.1" "17"
 checkVersion "1.18.1" "17"
@@ -43,3 +49,5 @@ checkVersion "1.21.8" "21"
 checkVersion "1.21.10" "21"
 checkVersion "1.21.11" "21"
 checkVersion "26.1" "25"
+
+ls -lh ~/.m2/repository/org/spigotmc/spigot/ || echo "spigot jar not found!"
